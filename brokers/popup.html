@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+</head>
+<body>
+
+<div class="popup">
+    <div class="close">X</div>
+
+    <div class="image">
+        <img src="images/logo.png" alt="">
+    </div>
+
+    <div class="title">
+        <h2>Закажите обратный звонок!</h2>
+        <span>К сожалению, наш рабочий день уже закончился, но мы обязательно перезвоним Вам в указанное время.</span>
+    </div>
+
+    <form action="" id="subm-form">
+        <div class="form">
+            <div class="phone-number">
+                <input type="text" id="phone" placeholder="+7(___) ___-__-__" required
+                       pattern="^\+7\(([0-9]{3})\) [0-9]{3}-[0-9]{2}-[0-9]{2}$">
+            </div>
+            <div class="date">
+                <input type="text" id="date" placeholder="Выберете дату" required>
+                <input type="text" id="time" placeholder="время" required>
+            </div>
+        </div>
+        <div class="button">
+            <button id="btn" type="submit">Жду звонка</button>
+        </div>
+
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script src="js/jquery.datetimepicker.full.min.js"></script>
+<script src="js/popup.js"></script>
+</body>
+</html>
