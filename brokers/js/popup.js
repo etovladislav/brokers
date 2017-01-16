@@ -40,6 +40,30 @@ for (i = 0; i < sURLVariables.length; i++) {
 }
 ;
 
+
+var info = [];
+$.getJSON("http://192.168.8.101/admin/info.php", function (data) {
+    var d = new Date();
+    var h = d.getHours();
+    // if (h >= 18 || h <= 8) {
+    //     $('#image').html('<img src="http://192.168.8.101/admin/images/' + data[1].icon + '" alt="">');
+    //     $('#text').html(data[1].monitor_text);
+    //     $('.date').css('display','block');
+    //     $('#link').fadeIn();
+    // } else {
+        $('#image').html('<img src="http://192.168.8.101/admin/images/' + data[0].icon + '" alt="">');
+        $('#text').html(data[0].monitor_text);
+        $('.date').css('display','none');
+        $('#link').css('display', 'block');
+    // }
+});
+
+$('#link').on('click', function () {
+    $('.date').css('display','block');
+    $('#link').css('display', 'none');
+
+
+})
 $('#subm-form').on('submit', function () {
     console.log(123123);
     var phone = $('#phone').val();
@@ -47,11 +71,12 @@ $('#subm-form').on('submit', function () {
     var time = $('#time').val();
     if (phone.length != 0 && time.length != 0 && date.length != 0) {
         $.ajax({
-            url: "/",
+            url: "http://192.168.8.101/user/fileForRequest.php",
             type: "POST",
             data: {
                 phone: phone,
                 date: date + " " + time,
+                utm: utm
             },
             success: function () {
                 $('#subm-form').html("Спасибо за заявку, ожидайте")

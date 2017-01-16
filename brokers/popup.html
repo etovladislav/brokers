@@ -7,17 +7,327 @@
     <link rel="stylesheet" href="css/jquery.datetimepicker.css">
 </head>
 <body>
+<style>
+
+    #uptocall-mini {
+        position: fixed;
+        top: 100px;
+        right: 100px;
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        opacity: 0.5;
+        z-index: 200998;
+    }
+
+    #uptocall-mini #uptocall-mini-main {
+        -moz-border-radius: 50% !important;
+        -webkit-border-radius: 50% !important;
+        border-radius: 50% !important;
+        -moz-background-clip: padding;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        background-color: rgb(23, 117, 167);
+        width: 70px;
+        height: 70px;
+        -webkit-animation: uptocallmini 1.5s 0s ease-out infinite;
+        -moz-animation: uptocallmini 1.5s 0s ease-out infinite;
+        animation: uptocallmini 1.5s 0s ease-out infinite;
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+
+    #uptocall-mini #uptocall-mini-main:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url(https://uptocall.com/widget/images/mini.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        -webkit-animation: uptocallphone 1.5s linear infinite;
+        -moz-animation: uptocallphone 1.5s linear infinite;
+        animation: uptocallphone 1.5s linear infinite;
+    }
+
+    #uptocall-mini:hover {
+        opacity: 0.8;
+    }
+
+    #uptocall-mini:hover #uptocall-mini-main {
+        -webkit-animation: uptocallmini2 1s 0.4s ease-out infinite;
+        -moz-animation: uptocallmini2 1s 0.4s ease-out infinite;
+        animation: uptocallmini2 1s 0.4s ease-out infinite;
+    }
+
+    #uptocall-mini:hover #uptocall-mini-main:before {
+        -webkit-animation: uptocallphone2 1s linear infinite;
+        -moz-animation: uptocallphone2 1s linear infinite;
+        animation: uptocallphone2 1s linear infinite;
+    }
+
+    #uptocall-mini:hover #uptocall-mini-main.uptocall-mini-close:before {
+        background-image: url(https://uptocall.com/widget/images/mini-close.png);
+        -webkit-animation: none;
+        -moz-animation: none;
+        animation: none
+    }
+
+    @-webkit-keyframes uptocallphone {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @-moz-keyframes uptocallphone {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes uptocallphone {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @-webkit-keyframes uptocallphone2 {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @-moz-keyframes uptocallphone2 {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes uptocallphone2 {
+        0% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        25% {
+            -ms-transform: rotate(30deg);
+            -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+        }
+        50% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        75% {
+            -ms-transform: rotate(-30deg);
+            -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+        }
+        100% {
+            -ms-transform: rotate(0deg);
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+    }
+
+    @-webkit-keyframes uptocallmini {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+    @-moz-keyframes uptocallmini {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+    @keyframes uptocallmini {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+    @-webkit-keyframes uptocallmini2 {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+    @-moz-keyframes uptocallmini2 {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+    @keyframes uptocallmini2 {
+        0% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 0 rgba(0, 0, 0, 0), 0 0 0 0 rgba(23, 117, 167, 0);
+        }
+        10% {
+            box-shadow: 0 0 8px 6px #1775a7, 0 0 12px 10px rgba(0, 0, 0, 0), 0 0 12px 14px #1775a7;
+        }
+        100% {
+            box-shadow: 0 0 8px 6px rgba(23, 117, 167, 0), 0 0 0 40px rgba(0, 0, 0, 0), 0 0 0 40px rgba(23, 117, 167, 0);
+        }
+    }
+
+</style>
+<div id="uptocall-mini" class="" style="display: block;">
+    <div id="uptocall-mini-main"></div>
+</div>
 
 <div class="popup">
     <div class="close">X</div>
 
-    <div class="image">
-        <img src="images/logo.png" alt="">
+    <div class="image" id="image">
     </div>
 
     <div class="title">
         <h2>Закажите обратный звонок!</h2>
-        <span>К сожалению, наш рабочий день уже закончился, но мы обязательно перезвоним Вам в указанное время.</span>
+        <span id="text"></span>
     </div>
 
     <form action="" id="subm-form">
@@ -30,6 +340,7 @@
                 <input type="text" id="date" placeholder="Выберете дату" required>
                 <input type="text" id="time" placeholder="время" required>
             </div>
+            <p style="text-align: center;"><a href="#" id="link">Я не могу разговаривать сейчас</a> </p>
         </div>
         <div class="button">
             <button id="btn" type="submit">Жду звонка</button>
